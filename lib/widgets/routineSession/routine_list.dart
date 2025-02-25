@@ -1,7 +1,6 @@
 import 'package:cmsc128_lab/widgets/routineWidgets/task_selection_block.dart';
 import 'package:flutter/material.dart';
 
-import '../../models/activity.dart';
 import '../../utils/firestore_utils.dart';
 
 class RoutineSessionList extends StatefulWidget {

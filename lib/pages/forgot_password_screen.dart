@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cmsc128_lab/pages/signup_screen.dart';
-import 'package:cmsc128_lab/pages/home.dart';
 import 'package:cmsc128_lab/utils/styles.dart';
-import 'package:cmsc128_lab/widgets/custom_scaffold.dart';
-import 'package:icons_plus/icons_plus.dart';
-import '../auth.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -16,7 +12,7 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   String email = "";
-  TextEditingController mailcontroller = new TextEditingController();
+  TextEditingController mailcontroller = TextEditingController();
 
   final _formkey = GlobalKey<FormState>();
 

@@ -3,7 +3,6 @@ import 'package:cmsc128_lab/pages/signup_screen.dart';
 import 'package:cmsc128_lab/utils/styles.dart';
 import 'package:cmsc128_lab/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
-import 'package:icons_plus/icons_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cmsc128_lab/pages/navbar.dart';
 import 'package:google_sign_in/google_sign_in.dart';

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:iconly/iconly.dart';
-import 'package:cmsc128_lab/data/task_data.dart';
 
 class TaskBlock extends StatefulWidget {
   final String type = 'taskblock';

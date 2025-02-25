@@ -41,45 +41,43 @@ class TaskScreenState extends State<TaskScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: Column(
-          children: [
-            SearchBox(onSearch: (query) {
-              setState(() {
-                _searchQuery = query;
-                displayCategory = query.isEmpty;
-              });
-            }),
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Tasks',
-                      style: TextStyle(
-                          fontFamily: GoogleFonts.lexendDeca().fontFamily,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold)),
-                  IconButton(
-                      icon: const Icon(IconlyBold.filter_2),
-                      iconSize: 25,
-                      color: StyleColor.primary,
-                      onPressed: () {
-                        displayCategory = true;
-                        showFilterDialog();
-                      }),
-                ],
-              ),
+    return Padding(
+      padding: const EdgeInsets.all(18.0),
+      child: Column(
+        children: [
+          SearchBox(onSearch: (query) {
+            setState(() {
+              _searchQuery = query;
+              displayCategory = query.isEmpty;
+            });
+          }),
+          Container(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Tasks',
+                    style: TextStyle(
+                        fontFamily: GoogleFonts.lexendDeca().fontFamily,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold)),
+                IconButton(
+                    icon: const Icon(IconlyBold.filter_2),
+                    iconSize: 25,
+                    color: StyleColor.primary,
+                    onPressed: () {
+                      displayCategory = true;
+                      showFilterDialog();
+                    }),
+              ],
             ),
-            displayCategory
-                ? TaskList(filterCategories: _selectedCategories)
-                : TaskList(
-                    filterCategories: _selectedCategories,
-                    searchQuery: _searchQuery),
-          ],
-        ),
+          ),
+          displayCategory
+              ? TaskList(filterCategories: _selectedCategories)
+              : TaskList(
+                  filterCategories: _selectedCategories,
+                  searchQuery: _searchQuery),
+        ],
       ),
     );
   }

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
@@ -43,7 +42,6 @@ class _StateRoutineSessionTimerTasks extends State<RoutineSessionTimerTasks> {
 
   @override
   void initState() {
-    // TODO: implement initState
     duration = widget.duration;
     getTasks();
     print(widget.tasks);
@@ -250,7 +248,7 @@ class _StateRoutineSessionTimerTasks extends State<RoutineSessionTimerTasks> {
                     color: Colors.black.withOpacity(0.5),
                   ),
                   Text(
-                      '${DateFormat('EEEE, MMMM d').format(DateTime.parse(task['date']))}',
+                      DateFormat('EEEE, MMMM d').format(DateTime.parse(task['date'])),
                       style: TextStyle(
                           fontSize: 10,
                           fontFamily: GoogleFonts.lexendDeca().fontFamily,

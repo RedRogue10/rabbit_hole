@@ -41,46 +41,44 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            titleTextStyle: TextStyle(
-                color: StyleColor.primaryText,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                fontFamily: GoogleFonts.lexendDeca().fontFamily),
-            title: ValueListenableBuilder<String>(
-              valueListenable: currentTab,
-              builder: (_, value, __) => Text("Your $value"),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+              color: StyleColor.primaryText,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              fontFamily: GoogleFonts.lexendDeca().fontFamily),
+          title: ValueListenableBuilder<String>(
+            valueListenable: currentTab,
+            builder: (_, value, __) => Text("Your $value"),
+          ),
+        ),
+        body: Column(
+          children: <Widget>[
+            ButtonsTabBar(
+              controller: _tcontroller,
+              radius: 14,
+              width: 185,
+              height: 60,
+              buttonMargin:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              contentCenter: true,
+              backgroundColor: StyleColor.primary,
+              unselectedBackgroundColor: StyleColor.alternate,
+              labelStyle: StyleText.labelStyle,
+              unselectedLabelStyle: StyleText.unselectedLabelStyle,
+              tabs: tabs,
             ),
-          ),
-          body: Column(
-            children: <Widget>[
-              ButtonsTabBar(
-                controller: _tcontroller,
-                radius: 14,
-                width: 185,
-                height: 60,
-                buttonMargin:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                contentCenter: true,
-                backgroundColor: StyleColor.primary,
-                unselectedBackgroundColor: StyleColor.alternate,
-                labelStyle: StyleText.labelStyle,
-                unselectedLabelStyle: StyleText.unselectedLabelStyle,
-                tabs: tabs,
-              ),
-              // To be replaced with pages
-              Expanded(
-                child: TabBarView(
-                    controller: _tcontroller,
-                    children: [DynamicHomeRoutine(), TaskScreen()]),
-              ),
-            ],
-          ),
+            // To be replaced with pages
+            Expanded(
+              child: TabBarView(
+                  controller: _tcontroller,
+                  children: [DynamicHomeRoutine(), TaskScreen()]),
+            ),
+          ],
         ),
       ),
     );

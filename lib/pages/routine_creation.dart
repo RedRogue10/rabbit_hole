@@ -1,10 +1,8 @@
-import 'package:cmsc128_lab/models/task_block.dart';
 import 'package:cmsc128_lab/pages/navbar.dart';
 import 'package:cmsc128_lab/pages/routine_session_landing.dart';
 import 'package:cmsc128_lab/utils/firestore_utils.dart';
 import 'package:cmsc128_lab/widgets/routineWidgets/routine_creation_activity_block.dart';
 import 'package:cmsc128_lab/widgets/routineWidgets/routine_creation_task_block.dart';
-import 'package:cmsc128_lab/widgets/routineWidgets/task_selection_block.dart';
 import 'package:cmsc128_lab/utils/styles.dart';
 import 'package:day_picker/day_picker.dart';
 import 'package:flutter/material.dart';
@@ -71,88 +69,85 @@ class _RoutineCreationDefaultState extends State<RoutineCreation>
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return MaterialApp(
-      home: Scaffold(
-        floatingActionButton:
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          IconButton(
-              onPressed: () {
-                addActivity();
-              },
-              style: TextButton.styleFrom(backgroundColor: StyleColor.primary),
-              icon: Icon(
-                Icons.playlist_add_rounded,
-                color: Colors.white,
-              )),
-          ElevatedButton(
-              onPressed: () {
-                addTaskBlock();
-              },
-              child: Text('Add Task Block')),
-          ElevatedButton(
-              style:
-                  ElevatedButton.styleFrom(backgroundColor: StyleColor.primary),
-              onPressed: () {
-                createRoutineDialog();
-              },
-              child: Text(
-                "Create Routine",
-                style: TextStyle(color: Colors.white),
-              )),
-        ]),
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            tooltip: 'Home',
+    return Scaffold(
+      floatingActionButton:
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              addActivity();
             },
-          ),
-          title: const Text('Create a Routine'),
+            style: TextButton.styleFrom(backgroundColor: StyleColor.primary),
+            icon: Icon(
+              Icons.playlist_add_rounded,
+              color: Colors.white,
+            )),
+        ElevatedButton(
+            onPressed: () {
+              addTaskBlock();
+            },
+            child: Text('Add Task Block')),
+        ElevatedButton(
+            style:
+                ElevatedButton.styleFrom(backgroundColor: StyleColor.primary),
+            onPressed: () {
+              createRoutineDialog();
+            },
+            child: Text(
+              "Create Routine",
+              style: TextStyle(color: Colors.white),
+            )),
+      ]),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: 'Home',
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        body: Column(
-          children: [
-            titleText(),
-            SizedBox(height: 20),
-            Expanded(
-                child: ListView.separated(
-                    itemBuilder: (context, index) {
-                      var block = activityBlocks[index];
-                      return ListTile(
-                        title: block,
-                        trailing: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                if (block is TaskBlock) {
-                                  String? category =
-                                      block.getSelectedCategory();
+        title: const Text('Create a Routine'),
+      ),
+      body: Column(
+        children: [
+          titleText(),
+          SizedBox(height: 20),
+          Expanded(
+              child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    var block = activityBlocks[index];
+                    return ListTile(
+                      title: block,
+                      trailing: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              if (block is TaskBlock) {
+                                String? category = block.getSelectedCategory();
 
-                                  remainingCategories.add(category);
-                                  selectedCategories.remove(category);
-                                  activityBlocks.removeAt(index);
-                                  actCount -= 1;
-                                  print(
-                                      'Remaining categories after remove: $remainingCategories');
-                                } else {
-                                  activityBlocks.removeAt(index);
-                                  actCount -= 1;
-                                }
-                              });
-                            },
-                            icon: Icon(
-                              Icons.delete,
-                              size: width * 0.06,
-                            )),
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return SizedBox(
-                        height: height * 0.0001,
-                      );
-                    },
-                    itemCount: actCount))
-          ],
-        ),
+                                remainingCategories.add(category);
+                                selectedCategories.remove(category);
+                                activityBlocks.removeAt(index);
+                                actCount -= 1;
+                                print(
+                                    'Remaining categories after remove: $remainingCategories');
+                              } else {
+                                activityBlocks.removeAt(index);
+                                actCount -= 1;
+                              }
+                            });
+                          },
+                          icon: Icon(
+                            Icons.delete,
+                            size: width * 0.06,
+                          )),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return SizedBox(
+                      height: height * 0.0001,
+                    );
+                  },
+                  itemCount: actCount))
+        ],
       ),
     );
   }

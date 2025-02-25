@@ -145,9 +145,9 @@ class _DefaultActivityBlock extends State<ActivityBlock> {
     String twoDigitMinutes = duration.inMinutes.remainder(60).abs().toString();
     String twoDigitSeconds = duration.inSeconds.remainder(60).abs().toString();
     if (duration.inHours == 0) {
-      return "${twoDigitMinutes} min ${twoDigitSeconds} sec";
+      return "$twoDigitMinutes min $twoDigitSeconds sec";
     } else {
-      return "${duration.inHours} hr ${twoDigitMinutes} min";
+      return "${duration.inHours} hr $twoDigitMinutes min";
     }
   }
 

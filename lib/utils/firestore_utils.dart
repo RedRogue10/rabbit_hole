@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cmsc128_lab/models/routine.dart';
 import 'package:cmsc128_lab/models/activity.dart';
-import 'package:cmsc128_lab/models/task_block.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 const String ROUTINE_COLLECTION_REF = "routines";

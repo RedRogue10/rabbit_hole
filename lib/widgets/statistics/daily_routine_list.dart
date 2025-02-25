@@ -4,7 +4,6 @@ import 'package:cmsc128_lab/utils/styles.dart';
 import 'package:cmsc128_lab/widgets/fetching_data.dart';
 import 'package:cmsc128_lab/widgets/routine_card.dart';
 import 'package:cmsc128_lab/widgets/title_with_icon.dart';
-import 'dart:developer' show log;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 

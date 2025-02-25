@@ -42,7 +42,6 @@ class DatabaseService {
 
       dayRoutines.add(DayRoutine(
           name: routine.name,
-          icon: routine.icon,
           color: routine.color,
           numActivities: routine.numActivities,
           completionRate: completionRate));
@@ -129,9 +128,8 @@ class DatabaseService {
         DayRoutine(
             name: routine.name,
             color: routine.color,
-            icon: routine.icon,
             numActivities: routine.numActivities,
-            completionRate: completionRate),
+            completionRate: completionRate.isNaN ? 0 : completionRate),
       );
     }
 
@@ -152,6 +150,9 @@ class DatabaseService {
     if (totalRates == 0) {
       return [];
     }
+
+    weeklyAvgCompletionRate.sort(
+        (a, b) => (b.completionRate as num).compareTo(a.completionRate as num));
 
     return weeklyAvgCompletionRate;
   }

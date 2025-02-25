@@ -34,7 +34,7 @@ class DBroutineService {
   }
 
   Stream<QuerySnapshot> getUpcoming() {
-    late final _upcoming = FirebaseFirestore.instance
+    late final upcoming = FirebaseFirestore.instance
         .collection('users')
         .doc(routineid)
         .collection('routines')
@@ -45,11 +45,11 @@ class DBroutineService {
             toFirestore: (routine, _) => routine.toJson())
         .where('daysOfWeek',
             arrayContains: DateFormat('EEEE').format(now).toLowerCase());
-    return _upcoming.snapshots();
+    return upcoming.snapshots();
   }
 
   Stream<QuerySnapshot> getOthers() {
-    late final _others = _firestore
+    late final others = _firestore
         .collection('users')
         .doc(routineid)
         .collection("routines")
@@ -59,11 +59,11 @@ class DBroutineService {
         toFirestore: (routine, _) => routine.toJson())
         .where('daysOfWeek',
             whereNotIn: [DateFormat('EEEE').format(now).toLowerCase()]);
-    return _others.snapshots();
+    return others.snapshots();
   }
 
   Stream<QuerySnapshot> getCompleted() {
-    late final _completed = FirebaseFirestore.instance
+    late final completed = FirebaseFirestore.instance
         .collection('users')
         .doc(routineid)
         .collection('routines')
@@ -73,6 +73,6 @@ class DBroutineService {
                 ),
             toFirestore: (routine, _) => routine.toJson())
         .where('numActivities', isEqualTo: 0);
-    return _completed.snapshots();
+    return completed.snapshots();
   }
 }
