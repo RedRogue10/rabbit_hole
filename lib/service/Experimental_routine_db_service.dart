@@ -23,10 +23,9 @@ class DBroutineService {
         .doc(routineid)
         .collection('routines')
         .withConverter<Routine>(
-            fromFirestore: (snapshots, _) => Routine.fromJson(
-                  snapshots.data()!,
-                ),
-            toFirestore: (routine, _) => routine.toJson());
+        fromFirestore: (snapshots, _) =>
+            Routine.fromJson(snapshots.data()!),
+        toFirestore: (routine, _) => routine.toJson());
   }
 
   Stream<QuerySnapshot> getRoutine() {
@@ -72,7 +71,7 @@ class DBroutineService {
                   snapshots.data()!,
                 ),
             toFirestore: (routine, _) => routine.toJson())
-        .where('numActivities', isEqualTo: 0);
-    return completed.snapshots();
+        .where('completed', isEqualTo: true);
+    return _completed.snapshots();
   }
 }
