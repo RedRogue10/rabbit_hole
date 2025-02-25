@@ -1,8 +1,6 @@
 import 'package:cmsc128_lab/widgets/routineWidgets/complete_today_block.dart';
-import 'package:cmsc128_lab/widgets/routineWidgets/upcoming_today_block.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cmsc128_lab/widgets/routineWidgets/other_routine_block.dart';
 import 'package:cmsc128_lab/widgets/routineWidgets/all_routines_block.dart';
 
 class DynamicHomeRoutine extends StatefulWidget {

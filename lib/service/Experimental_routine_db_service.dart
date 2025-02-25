@@ -23,9 +23,9 @@ class DBroutineService {
         .doc(routineid)
         .collection('routines')
         .withConverter<Routine>(
-        fromFirestore: (snapshots, _) =>
-            Routine.fromJson(snapshots.data()!),
-        toFirestore: (routine, _) => routine.toJson());
+            fromFirestore: (snapshots, _) =>
+                Routine.fromJson(snapshots.data()!),
+            toFirestore: (routine, _) => routine.toJson());
   }
 
   Stream<QuerySnapshot> getRoutine() {
@@ -53,9 +53,9 @@ class DBroutineService {
         .doc(routineid)
         .collection("routines")
         .withConverter<Routine>(
-        fromFirestore: (snapshots, _) =>
-            Routine.fromJson(snapshots.data()!),
-        toFirestore: (routine, _) => routine.toJson())
+            fromFirestore: (snapshots, _) =>
+                Routine.fromJson(snapshots.data()!),
+            toFirestore: (routine, _) => routine.toJson())
         .where('daysOfWeek',
             whereNotIn: [DateFormat('EEEE').format(now).toLowerCase()]);
     return others.snapshots();
@@ -72,6 +72,6 @@ class DBroutineService {
                 ),
             toFirestore: (routine, _) => routine.toJson())
         .where('completed', isEqualTo: true);
-    return _completed.snapshots();
+    return completed.snapshots();
   }
 }
