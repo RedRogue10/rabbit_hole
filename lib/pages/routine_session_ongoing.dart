@@ -15,7 +15,6 @@ class RoutineSessionOngoing extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _StateRoutineSessionOngoing();
   }
 }
@@ -27,7 +26,6 @@ class _StateRoutineSessionOngoing extends State<RoutineSessionOngoing> {
 
   @override
   void initState() {
-    // TODO: implement initState
     getNumAct();
 
     super.initState();
@@ -57,7 +55,6 @@ class _StateRoutineSessionOngoing extends State<RoutineSessionOngoing> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

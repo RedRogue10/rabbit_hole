@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
 import 'package:intl/intl.dart';
-import 'dart:developer' show log;
 
 class StatisticsWeekly extends StatefulWidget {
   const StatisticsWeekly({super.key});
@@ -27,11 +26,11 @@ class _StatisticsWeeklyState extends State<StatisticsWeekly> {
 
   @override
   void initState() {
-    super.initState();
-
     _startDate = Time.getWeekStart(now);
     _endDate = Time.addDays(_startDate, duration);
     _updateTimeframe();
+
+    super.initState();
   }
 
   void _goPrevWeek() {

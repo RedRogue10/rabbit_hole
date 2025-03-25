@@ -1,10 +1,8 @@
-import 'package:cmsc128_lab/models/task_block.dart';
 import 'package:cmsc128_lab/pages/navbar.dart';
 import 'package:cmsc128_lab/pages/routine_session_landing.dart';
 import 'package:cmsc128_lab/utils/firestore_utils.dart';
 import 'package:cmsc128_lab/widgets/routineWidgets/routine_creation_activity_block.dart';
 import 'package:cmsc128_lab/widgets/routineWidgets/routine_creation_task_block.dart';
-import 'package:cmsc128_lab/widgets/routineWidgets/task_selection_block.dart';
 import 'package:cmsc128_lab/utils/styles.dart';
 import 'package:day_picker/day_picker.dart';
 import 'package:flutter/material.dart';
@@ -71,102 +69,100 @@ class _RoutineCreationDefaultState extends State<RoutineCreation>
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return MaterialApp(
-      home: Scaffold(
-        floatingActionButton: Container(
-          margin: EdgeInsets.only(bottom: 16),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          addActivity();
-                        },
-                        style: TextButton.styleFrom(
-                            backgroundColor: StyleColor.primary),
-                        icon: Icon(
-                          Icons.playlist_add_rounded,
-                          color: Colors.white,
-                        )),
-                    ElevatedButton(
-                        onPressed: () {
-                          addTaskBlock();
-                        },
-                        child: Text('Add Task Block')),
-                  ],
-                ),
-                SizedBox(height: 10),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: StyleColor.primary),
-                    onPressed: () {
-                      if( routineName == "Click to set routine name"){
-                        setNameDialog();
-                      }else{
-                      createRoutineDialog();}
-                    },
-                    child: Text(
-                      "Create Routine",
-                      style: TextStyle(color: Colors.white),
-                    )),
-              ],
-            ),
-          ]),
-        ),
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            tooltip: 'Home',
-            onPressed: () {
-              Navigator.pop(context);
-            },
+    return Scaffold(
+      floatingActionButton: Container(
+        margin: EdgeInsets.only(bottom: 16),
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        addActivity();
+                      },
+                      style: TextButton.styleFrom(
+                          backgroundColor: StyleColor.primary),
+                      icon: Icon(
+                        Icons.playlist_add_rounded,
+                        color: Colors.white,
+                      )),
+                  ElevatedButton(
+                      onPressed: () {
+                        addTaskBlock();
+                      },
+                      child: Text('Add Task Block')),
+                ],
+              ),
+              SizedBox(height: 10),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: StyleColor.primary),
+                  onPressed: () {
+                    if (routineName == "Click to set routine name") {
+                      setNameDialog();
+                    } else {
+                      createRoutineDialog();
+                    }
+                  },
+                  child: Text(
+                    "Create Routine",
+                    style: TextStyle(color: Colors.white),
+                  )),
+            ],
           ),
-          title: const Text('Create a Routine'),
+        ]),
+      ),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: 'Home',
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        body: Column(
-          children: [
-            titleText(),
-            SizedBox(height: 20),
-            Expanded(
-                child: ListView.separated(
-                    itemBuilder: (context, index) {
-                      var block = activityBlocks[index];
-                      return ListTile(
-                        title: block,
-                        trailing: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                if (block is TaskBlock) {
-                                  String? category =
-                                      block.getSelectedCategory();
+        title: const Text('Create a Routine'),
+      ),
+      body: Column(
+        children: [
+          titleText(),
+          SizedBox(height: 20),
+          Expanded(
+              child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    var block = activityBlocks[index];
+                    return ListTile(
+                      title: block,
+                      trailing: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              if (block is TaskBlock) {
+                                String? category = block.getSelectedCategory();
 
-                                  remainingCategories.add(category);
-                                  selectedCategories.remove(category);
-                                  activityBlocks.removeAt(index);
-                                  actCount -= 1;
-                                } else {
-                                  activityBlocks.removeAt(index);
-                                  actCount -= 1;
-                                }
-                              });
-                            },
-                            icon: Icon(
-                              Icons.delete,
-                              size: width * 0.06,
-                            )),
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return SizedBox(
-                        height: height * 0.0001,
-                      );
-                    },
-                    itemCount: actCount))
-          ],
-        ),
+                                remainingCategories.add(category);
+                                selectedCategories.remove(category);
+                                activityBlocks.removeAt(index);
+                                actCount -= 1;
+                              } else {
+                                activityBlocks.removeAt(index);
+                                actCount -= 1;
+                              }
+                            });
+                          },
+                          icon: Icon(
+                            Icons.delete,
+                            size: width * 0.06,
+                          )),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return SizedBox(
+                      height: height * 0.0001,
+                    );
+                  },
+                  itemCount: actCount))
+        ],
       ),
     );
   }
@@ -250,7 +246,7 @@ class _RoutineCreationDefaultState extends State<RoutineCreation>
             TextButton(
               child: Text('SUBMIT'),
               onPressed: () {
-                if (inputController.text.isEmpty){
+                if (inputController.text.isEmpty) {
                   inputController.text = "Click to set routine name";
                 }
                 setState(() {
@@ -263,30 +259,30 @@ class _RoutineCreationDefaultState extends State<RoutineCreation>
         ),
       );
   Future setNameDialog() => showDialog(
-    context: context,
-    builder: (context) => AlertDialog(
-      title: Text('Enter Routine Name First'),
-      content: TextField(
-        controller: inputController,
-        autofocus: true,
-        decoration: InputDecoration(hintText: "Enter routine name"),
-      ),
-      actions: [
-        TextButton(
-          child: Text('SUBMIT'),
-          onPressed: () {
-            if (inputController.text.isEmpty){
-              inputController.text = "Click to set routine name";
-            }
-            setState(() {
-              Navigator.pop(context);
-              routineName = inputController.text;
-            });
-          },
-        )
-      ],
-    ),
-  );
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Enter Routine Name First'),
+          content: TextField(
+            controller: inputController,
+            autofocus: true,
+            decoration: InputDecoration(hintText: "Enter routine name"),
+          ),
+          actions: [
+            TextButton(
+              child: Text('SUBMIT'),
+              onPressed: () {
+                if (inputController.text.isEmpty) {
+                  inputController.text = "Click to set routine name";
+                }
+                setState(() {
+                  Navigator.pop(context);
+                  routineName = inputController.text;
+                });
+              },
+            )
+          ],
+        ),
+      );
   final List<DayInWeek> _days = [
     DayInWeek("Mo", dayKey: "monday"),
     DayInWeek("Tu", dayKey: "tuesday"),
@@ -349,7 +345,7 @@ class _RoutineCreationDefaultState extends State<RoutineCreation>
         color: 128390830,
         name: routineName,
         numActivities: actCount,
-        repeatDaysCount: repeatDays.isEmpty? 1:repeatDays.length.toDouble(),
+        repeatDaysCount: repeatDays.isEmpty ? 1 : repeatDays.length.toDouble(),
         repeatWeeksCount: 1,
         daysOfWeek: repeatDays);
     List activities = [];
@@ -382,7 +378,4 @@ class _RoutineCreationDefaultState extends State<RoutineCreation>
               builder: (context) => RoutineSessionLanding(result)));
     });
   }
-
-
-
 }

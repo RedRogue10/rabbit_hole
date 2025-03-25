@@ -28,45 +28,43 @@ class _StatisticsState extends State<Statistics> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            titleTextStyle: TextStyle(
-                color: StyleColor.primaryText,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                fontFamily: GoogleFonts.lexendDeca().fontFamily),
-            title: const Text(
-              "Routine Statistics",
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+              color: StyleColor.primaryText,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              fontFamily: GoogleFonts.lexendDeca().fontFamily),
+          title: const Text(
+            "Routine Statistics",
+          ),
+        ),
+        body: Column(
+          children: <Widget>[
+            ButtonsTabBar(
+              radius: 14,
+              width: 125,
+              height: 60,
+              buttonMargin:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              contentCenter: true,
+              backgroundColor: StyleColor.primary,
+              unselectedBackgroundColor: StyleColor.alternate,
+              labelStyle: StyleText.labelStyle,
+              unselectedLabelStyle: StyleText.unselectedLabelStyle,
+              tabs: tabs,
             ),
-          ),
-          body: Column(
-            children: <Widget>[
-              ButtonsTabBar(
-                radius: 14,
-                width: 125,
-                height: 60,
-                buttonMargin:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                contentCenter: true,
-                backgroundColor: StyleColor.primary,
-                unselectedBackgroundColor: StyleColor.alternate,
-                labelStyle: StyleText.labelStyle,
-                unselectedLabelStyle: StyleText.unselectedLabelStyle,
-                tabs: tabs,
-              ),
-              const Expanded(
-                child: TabBarView(children: [
-                  StatisticsDaily(),
-                  StatisticsWeekly(),
-                  StatisticsMonthly(),
-                ]),
-              ),                  SizedBox(height: 60,)
-            ],
-          ),
+            const Expanded(
+              child: TabBarView(children: [
+                StatisticsDaily(),
+                StatisticsWeekly(),
+                StatisticsMonthly(),
+              ]),
+            ),                  SizedBox(height: 60,)
+          ],
         ),
       ),
     );

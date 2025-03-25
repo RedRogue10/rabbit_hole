@@ -6,7 +6,7 @@ import 'profile_screen.dart';
 import 'package:cmsc128_lab/widgets/task/add_task_dialog.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+  const BottomNavBar({super.key});
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();

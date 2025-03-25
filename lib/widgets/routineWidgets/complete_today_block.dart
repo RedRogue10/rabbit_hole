@@ -1,12 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cmsc128_lab/models/routine.dart';
-import 'package:cmsc128_lab/pages/dynamic_routine_screen.dart';
 import 'package:cmsc128_lab/service/Experimental_routine_db_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
-import 'package:intl/intl.dart';
-import 'package:cmsc128_lab/utils/firestore_utils.dart';
 import 'package:cmsc128_lab/utils/styles.dart';
 
 class CompleteTodayBlock extends StatefulWidget {

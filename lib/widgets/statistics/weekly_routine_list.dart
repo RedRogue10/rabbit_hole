@@ -7,7 +7,6 @@ import 'package:cmsc128_lab/widgets/title_with_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:iconly/iconly.dart';
-import 'dart:developer' show log;
 
 class WeeklyRoutineList extends StatefulWidget {
   const WeeklyRoutineList({
@@ -88,7 +87,7 @@ class _WeeklyRoutineListState extends State<WeeklyRoutineList> {
           return RoutineCard(
             name: entry.name,
             numActivities: entry.numActivities,
-            completionRate: entry.completionRate! / 100,
+            completionRate: (entry.completionRate ?? 0) / 100,
             color: entry.color,
           );
         }).toList();

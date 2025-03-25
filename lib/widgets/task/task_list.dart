@@ -185,7 +185,7 @@ class _TaskListState extends State<TaskList> {
                     color: Colors.black.withOpacity(0.5),
                   ),
                   Text(
-                      '${DateFormat('EEEE, MMMM d').format(DateTime.parse(task['date']))}',
+                      DateFormat('EEEE, MMMM d').format(DateTime.parse(task['date'])),
                       style: TextStyle(
                           fontSize: 10,
                           fontFamily: GoogleFonts.lexendDeca().fontFamily,

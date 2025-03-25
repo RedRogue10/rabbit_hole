@@ -52,7 +52,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '308136893321',
     projectId: 'cmsc128-rabbithole',
     authDomain: 'cmsc128-rabbithole.firebaseapp.com',
-    storageBucket: 'cmsc128-rabbithole.appspot.com',
+    databaseURL: 'https://cmsc128-rabbithole-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'cmsc128-rabbithole.firebasestorage.app',
     measurementId: 'G-P6LNMLH6G1',
   );
 
@@ -61,7 +62,8 @@ class DefaultFirebaseOptions {
     appId: '1:308136893321:android:515f6b044917f3ba9ddf58',
     messagingSenderId: '308136893321',
     projectId: 'cmsc128-rabbithole',
-    storageBucket: 'cmsc128-rabbithole.appspot.com',
+    databaseURL: 'https://cmsc128-rabbithole-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'cmsc128-rabbithole.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
@@ -69,7 +71,10 @@ class DefaultFirebaseOptions {
     appId: '1:308136893321:ios:171f8b9e380518f19ddf58',
     messagingSenderId: '308136893321',
     projectId: 'cmsc128-rabbithole',
-    storageBucket: 'cmsc128-rabbithole.appspot.com',
+    databaseURL: 'https://cmsc128-rabbithole-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'cmsc128-rabbithole.firebasestorage.app',
+    iosClientId: '308136893321-2jrhe2fb7uhskm5grdi3pr0qu9ic1via.apps.googleusercontent.com',
     iosBundleId: 'com.example.cmsc128Lab',
   );
+
 }

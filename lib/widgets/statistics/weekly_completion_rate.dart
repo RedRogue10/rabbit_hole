@@ -6,7 +6,6 @@ import 'package:cmsc128_lab/widgets/no_fetched_data.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:developer' show log;
 
 class WeeklyRoutineChart extends StatefulWidget {
   const WeeklyRoutineChart({super.key, required this.date});

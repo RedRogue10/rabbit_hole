@@ -1,9 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cmsc128_lab/models/activity.dart';
 import 'package:cmsc128_lab/service/database_service.dart';
 import 'package:cmsc128_lab/utils/firestore_utils.dart';
 import 'package:confetti/confetti.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
@@ -26,7 +23,6 @@ class _StateRoutineSessionComplete extends State<RoutineSessionComplete> {
   List activities = [];
   @override
   void initState() {
-    // TODO: implement initState
     getRoutine();
 
     super.initState();
@@ -48,7 +44,7 @@ class _StateRoutineSessionComplete extends State<RoutineSessionComplete> {
       ),
     );
   }
-  ConfettiController _controller = ConfettiController(duration: const Duration(seconds: 10));
+  final ConfettiController _controller = ConfettiController(duration: const Duration(seconds: 10));
   Widget congratulations(){
     return ConfettiWidget(
       confettiController: _controller,

@@ -4,7 +4,6 @@ import 'package:cmsc128_lab/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:cmsc128_lab/pages/login_screen.dart';
 import 'package:cmsc128_lab/pages/navbar.dart';
-import 'package:icons_plus/icons_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpScreen extends StatefulWidget {

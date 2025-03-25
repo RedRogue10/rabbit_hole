@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 class ActivityBlock extends StatefulWidget {
   final String type = 'activity';
 
+  const ActivityBlock({super.key});
+
+  @override
   State<ActivityBlock> createState() {
     return _ActivityBlockState();
   }

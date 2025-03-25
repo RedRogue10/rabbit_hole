@@ -20,16 +20,16 @@ class _AddTaskFormState extends State<AddTaskForm> {
   String _selectedCategory = "Personal";
 
   Future<void> _selectDate() async {
-    DateTime? _selected = await showDatePicker(
+    DateTime? selected = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime.now(),
       lastDate: DateTime(2100),
     );
 
-    if (_selected != null) {
+    if (selected != null) {
       setState(() {
-        _dateController.text = _selected.toString().split(" ")[0];
+        _dateController.text = selected.toString().split(" ")[0];
       });
     }
   }

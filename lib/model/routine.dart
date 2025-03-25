@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class Routine {
   final DocumentReference? docRef;
   final String name;
-  final dynamic icon;
   final Color color;
   final int numActivities;
   final double? repeatWeeksCount;
@@ -13,8 +12,7 @@ class Routine {
   Routine({
     this.docRef,
     required this.name,
-    required this.icon,
-    required this.color,  
+    required this.color,
     required this.numActivities,
     this.repeatWeeksCount,
     this.repeatDaysCount,
@@ -23,7 +21,6 @@ class Routine {
   Routine.fromDocumentSnapshot(DocumentSnapshot<Map<String, dynamic>> doc)
       : docRef = doc.reference,
         name = doc.data()!["name"],
-        icon = doc.data()!["icon"],
         color = Color(doc.data()!["color"]),
         numActivities = doc.data()!["numActivities"],
         repeatWeeksCount = doc.data()!["repeatWeeksCount"],
@@ -35,7 +32,6 @@ class DayRoutine extends Routine {
 
   DayRoutine({
     required super.name,
-    required super.icon,
     required super.color,
     required super.numActivities,
     this.completionRate,
